@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Wedding of Andi & Sinta</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Halaman 1: Welcome / Input Nama -->
+  <section id="welcome" class="page active">
+    <div class="floating-hearts"></div>
+    <div class="welcome-card">
+      <p class="subtitle">The Wedding Of</p>
+      <h1 class="couple-name">Andi <span>&</span> Sinta</h1>
+      <p class="date">12 . 12 . 2025</p>
+
+      <div class="divider"></div>
+
+      <p class="greeting">Kepada Bapak/Ibu/Saudara/i, silakan masukkan nama Anda:</p>
+      <input type="text" id="guestName" placeholder="Tulis nama Anda..." />
+      <button id="btnEnter" class="btn-primary">Buka Undangan 💌</button>
+      <p class="error-msg" id="errorMsg"></p>
+    </div>
+  </section>
+
+  <!-- Halaman 2: Isi Undangan -->
+  <section id="invitation" class="page">
+    <div class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="subtitle">We Are Getting Married</p>
+        <h1 class="couple-name">Andi <span>&</span> Sinta</h1>
+        <p class="date">12 Desember 2025</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Assalamu'alaikum Warahmatullahi Wabarakatuh</h2>
+      <p class="section-text">
+        Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan
+        acara pernikahan putra-putri kami. Merupakan suatu kehormatan dan kebahagiaan
+        bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.
+      </p>
+    </div>
+
+    <div class="section couple-section">
+      <div class="person">
+        <div class="avatar">A</div>
+        <h3>Andi Pratama, S.T.</h3>
+        <p>Putra dari Bpk. Ahmad & Ibu Siti</p>
+      </div>
+      <div class="heart-divider">&hearts;</div>
+      <div class="person">
+        <div class="avatar">S</div>
+        <h3>Sinta Dewi, S.E.</h3>
+        <p>Putri dari Bpk. Budi & Ibu Rina</p>
+      </div>
+    </div>
+
+    <div class="section countdown-section">
+      <h2 class="section-title">Menuju Hari Bahagia</h2>
+      <div class="countdown" id="countdown">
+        <div class="time-box"><span id="days">0</span><p>Hari</p></div>
+        <div class="time-box"><span id="hours">0</span><p>Jam</p></div>
+        <div class="time-box"><span id="minutes">0</span><p>Menit</p></div>
+        <div class="time-box"><span id="seconds">0</span><p>Detik</p></div>
+      </div>
+    </div>
+
+    <div class="section event-section">
+      <h2 class="section-title">Detail Acara</h2>
+      <div class="event-cards">
+        <div class="event-card">
+          <h3>Akad Nikah</h3>
+          <p>🕐 08.00 WIB</p>
+          <p>📍 Masjid Al-Hikmah</p>
+          <p>Jl. Melati No. 12, Jakarta</p>
+        </div>
+        <div class="event-card">
+          <h3>Resepsi</h3>
+          <p>🕐 11.00 - 14.00 WIB</p>
+          <p>📍 Gedung Serbaguna</p>
+          <p>Jl. Mawar No. 45, Jakarta</p>
+        </div>
+      </div>
+      <button class="btn-secondary" onclick="openMaps()">📍 Buka Lokasi di Maps</button>
+    </div>
+
+    <div class="section gallery-section">
+      <h2 class="section-title">Momen Bahagia</h2>
+      <div class="gallery">
+        <div class="gallery-item" style="background: linear-gradient(135deg,#f8c8dc,#ff9ec4);"></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg,#ffd6e8,#f4a6c0);"></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg,#f9b8d0,#e07fa3);"></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg,#ffe0ec,#c96b8f);"></div>
+      </div>
+    </div>
+
+    <div class="section rsvp-section">
+      <h2 class="section-title">Konfirmasi Kehadiran</h2>
+      <p class="section-text">
+        Merupakan kebahagiaan bagi kami apabila Anda berkenan hadir.
+      </p>
+
+      <div id="rsvpStep1">
+        <p class="rsvp-question">Apakah Anda bersedia hadir di acara kami?</p>
+        <div class="rsvp-buttons">
+          <button class="btn-yes" onclick="rsvpYes()">💕 Ya, Saya Hadir</button>
+          <button class="btn-no" onclick="rsvpNo()">😔 Maaf, Tidak Bisa</button>
+        </div>
+      </div>
+
+      <div id="rsvpYesForm" class="rsvp-form hidden">
+        <h3>Terima kasih, <span id="yesName"></span>! 🎉</h3>
+        <label>Jumlah orang yang hadir:</label>
+        <input type="number" id="guestCount" min="1" value="1" />
+        <label>Ucapan & Doa:</label>
+        <textarea id="wishMessage" placeholder="Tulis ucapan & doa terbaik Anda..."></textarea>
+        <button class="btn-primary" onclick="submitRSVP('hadir')">Kirim Konfirmasi</button>
+      </div>
+
+      <div id="rsvpNoForm" class="rsvp-form hidden">
+        <h3>Terima kasih atas kabarnya, <span id="noName"></span></h3>
+        <label>Mohon beritahu kami alasannya:</label>
+        <textarea id="reasonMessage" placeholder="Tulis alasan Anda..."></textarea>
+        <button class="btn-primary" onclick="submitRSVP('tidak hadir')">Kirim</button>
+      </div>
+
+      <div id="rsvpThanks" class="rsvp-thanks hidden">
+        <h2>Terima Kasih 🙏</h2>
+        <p>Konfirmasi Anda telah kami terima. Semoga kebaikan selalu menyertai Anda.</p>
+        <p class="love-note">With Love,<br><span>Andi & Sinta</span></p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Made with ♥ — Andi & Sinta 2025</p>
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
